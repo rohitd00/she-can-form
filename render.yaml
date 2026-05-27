@@ -1,0 +1,30 @@
+# render.yaml — Render Blueprint for automated deployment
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: shecan-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install && npx prisma generate && npx prisma migrate deploy && node prisma/seed.js
+    startCommand: node src/index.js
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        value: file:./prisma/shecan.db
+      - key: JWT_EXPIRES_IN
+        value: 12h
+      - key: PORT
+        value: 10000
+      # Set these manually in the Render dashboard (never commit secrets):
+      - key: JWT_SECRET
+        sync: false
+      - key: CLIENT_ORIGIN
+        sync: false
+      # Admin account credentials — used by seed.js on first deploy
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
