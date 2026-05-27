@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Environment variables — never commit these
+.env
+
+# SQLite database files
+prisma/shecan.db
+prisma/shecan.db-journal
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor directories
+.vscode/
+.idea/

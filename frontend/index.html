@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>She Can Foundation — Connect With Us</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --rose:       #c0374a;
+      --rose-dark:  #9c2438;
+      --rose-light: #f5e6e9;
+      --cream:      #fdf8f2;
+      --ink:        #1a1018;
+      --muted:      #6b5b63;
+      --border:     #e2d3d8;
+      --success:    #2d7a4f;
+      --success-bg: #edf7f1;
+      --error:      #c0374a;
+      --error-bg:   #fdeef1;
+      --card-bg:    #ffffff;
+      --shadow:     0 4px 24px rgba(26,16,24,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--cream);
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-brand .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--rose);
+      flex-shrink: 0;
+    }
+
+    .nav-brand span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--ink);
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-nav {
+      background: none;
+      border: 1.5px solid var(--border);
+      padding: 7px 18px;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-nav:hover { border-color: var(--rose); color: var(--rose); }
+
+    .btn-nav.active {
+      background: var(--rose);
+      border-color: var(--rose);
+      color: #fff;
+    }
+
+    /* ─── PAGES ─── */
+    .page { display: none; flex: 1; }
+    .page.visible { display: flex; }
+
+    /* ─── HERO / FORM PAGE ─── */
+    #page-form {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero {
+      width: 100%;
+      background: linear-gradient(135deg, var(--rose) 0%, var(--rose-dark) 100%);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.04) 0%, transparent 50%);
+    }
+
+    .hero-label {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: #fff;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.82);
+      font-size: 1rem;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .form-section {
+      width: 100%;
+      max-width: 560px;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.4rem 2.2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+
+    .card-sub {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    .field {
+      margin-bottom: 1.3rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 6px;
+      letter-spacing: 0.01em;
+    }
+
+    label .req { color: var(--rose); }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea {
+      width: 100%;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 11px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      color: var(--ink);
+      background: var(--cream);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      resize: none;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--rose);
+      box-shadow: 0 0 0 3px rgba(192,55,74,0.1);
+      background: #fff;
+    }
+
+    input.error-field, textarea.error-field {
+      border-color: var(--error);
+    }
+
+    .field-error {
+      font-size: 0.78rem;
+      color: var(--error);
+      margin-top: 5px;
+      display: none;
+    }
+
+    .field-error.show { display: block; }
+
+    textarea { height: 120px; line-height: 1.6; }
+
+    .char-count {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: right;
+      margin-top: 4px;
+    }
+
+    .char-count.warn { color: var(--rose); }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--rose);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 13px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-submit:hover { background: var(--rose-dark); }
+    .btn-submit:active { transform: scale(0.98); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .spinner {
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+
+    .btn-submit.loading .spinner { display: inline-block; }
+    .btn-submit.loading .btn-label { display: none; }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .toast {
+      margin-top: 1rem;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      display: none;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .toast.show { display: flex; }
+
+    .toast.success {
+      background: var(--success-bg);
+      color: var(--success);
+      border: 1px solid rgba(45,122,79,0.2);
+    }
+
+    .toast.error {
+      background: var(--error-bg);
+      color: var(--error);
+      border: 1px solid rgba(192,55,74,0.2);
+    }
+
+    .toast-icon { flex-shrink: 0; margin-top: 1px; }
+
+    /* ─── ADMIN PAGE ─── */
+    #page-admin { flex-direction: column; }
+
+    .admin-header {
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .admin-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .admin-header-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .badge {
+      background: var(--rose-light);
+      color: var(--rose);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    .btn-logout {
+      background: none;
+      border: 1.5px solid var(--border);
+      padding: 7px 18px;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-logout:hover { border-color: var(--rose); color: var(--rose); }
+
+    .admin-body { padding: 2rem; flex: 1; }
+
+    /* Login form (shown when not authenticated) */
+    .login-wrapper {
+      max-width: 380px;
+      margin: 4rem auto;
+    }
+
+    .login-wrapper .card-title { margin-bottom: 0.3rem; }
+
+    /* Submissions table */
+    .submissions-wrapper { overflow-x: auto; }
+
+    .stats-bar {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.4rem;
+      flex: 1;
+      min-width: 130px;
+    }
+
+    .stat-box .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--rose);
+    }
+
+    .stat-box .stat-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      font-size: 0.88rem;
+    }
+
+    thead { background: var(--rose-light); }
+
+    thead th {
+      text-align: left;
+      padding: 12px 16px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--rose-dark);
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--cream); }
+    tbody tr.unread { background: #fff8f9; }
+
+    td { padding: 12px 16px; vertical-align: top; color: var(--ink); }
+
+    .td-name { font-weight: 500; }
+    .td-message { color: var(--muted); max-width: 280px; }
+
+    .unread-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--rose);
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    .actions { display: flex; gap: 6px; flex-wrap: wrap; }
+
+    .btn-sm {
+      border: none;
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: 0.78rem;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      font-weight: 500;
+      transition: opacity 0.15s;
+    }
+
+    .btn-sm:hover { opacity: 0.8; }
+
+    .btn-read { background: var(--success-bg); color: var(--success); }
+    .btn-del  { background: var(--error-bg); color: var(--error); }
+
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--muted);
+    }
+
+    .empty-state .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .empty-state p { font-size: 0.9rem; }
+
+    .loading-state {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 1.4rem 2rem;
+      font-size: 0.78rem;
+      line-height: 1.6;
+    }
+
+    footer strong { color: rgba(255,255,255,0.85); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 600px) {
+      .hero { padding: 3rem 1.2rem 2.5rem; }
+      .form-section { padding: 2rem 1rem 3rem; }
+      .card { padding: 1.8rem 1.4rem; }
+      .admin-body { padding: 1rem; }
+      .admin-header { padding: 1rem 1rem; }
+      td, th { padding: 10px 10px; }
+      .td-message { max-width: 160px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-brand" href="#">
+      <span class="dot"></span>
+      <span>She Can Foundation</span>
+    </a>
+    <div class="nav-right">
+      <button class="btn-nav active" onclick="showPage('form', this)">Contact</button>
+      <button class="btn-nav" onclick="showPage('admin', this)">Admin</button>
+    </div>
+  </nav>
+
+  <!-- ─── CONTACT FORM PAGE ─── -->
+  <div id="page-form" class="page visible">
+
+    <div class="hero">
+      <div class="hero-label">Get In Touch</div>
+      <h1>We'd love to <em>hear from you</em></h1>
+      <p>Have questions, suggestions, or just want to connect? Fill out the form and our team will get back to you.</p>
+    </div>
+
+    <div class="form-section">
+      <div class="card">
+        <p class="card-title">Send a Message</p>
+        <p class="card-sub">All fields are required.</p>
+
+        <form id="contactForm" novalidate>
+
+          <div class="field">
+            <label for="name">Full Name <span class="req">*</span></label>
+            <input type="text" id="name" name="name" placeholder="e.g. Priya Sharma" autocomplete="name" />
+            <p class="field-error" id="err-name"></p>
+          </div>
+
+          <div class="field">
+            <label for="email">Email Address <span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" />
+            <p class="field-error" id="err-email"></p>
+          </div>
+
+          <div class="field">
+            <label for="message">Your Message <span class="req">*</span></label>
+            <textarea id="message" name="message" placeholder="Tell us what's on your mind..."></textarea>
+            <p class="char-count" id="charCount">0 / 2000</p>
+            <p class="field-error" id="err-message"></p>
+          </div>
+
+          <button type="submit" class="btn-submit" id="submitBtn">
+            <span class="btn-label">Send Message</span>
+            <span class="spinner"></span>
+          </button>
+
+          <div class="toast" id="toast" role="alert">
+            <span class="toast-icon" id="toastIcon"></span>
+            <span id="toastMsg"></span>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ─── ADMIN PAGE ─── -->
+  <div id="page-admin" class="page">
+
+    <!-- Login view -->
+    <div id="adminLogin" class="admin-body">
+      <div class="login-wrapper">
+        <div class="card">
+          <p class="card-title">Admin Login</p>
+          <p class="card-sub">Enter your credentials to access submissions.</p>
+
+          <div class="field">
+            <label for="adminUser">Username <span class="req">*</span></label>
+            <input type="text" id="adminUser" placeholder="admin" autocomplete="username" />
+          </div>
+
+          <div class="field">
+            <label for="adminPass">Password <span class="req">*</span></label>
+            <input type="password" id="adminPass" placeholder="••••••••" autocomplete="current-password" />
+          </div>
+
+          <button class="btn-submit" id="loginBtn" onclick="doLogin()">
+            <span class="btn-label">Login</span>
+            <span class="spinner"></span>
+          </button>
+
+          <div class="toast" id="loginToast" role="alert" style="margin-top:1rem;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard view (hidden until logged in) -->
+    <div id="adminDashboard" style="display:none; flex-direction:column; flex:1;">
+      <div class="admin-header">
+        <h2>Submissions</h2>
+        <div class="admin-header-right">
+          <span class="badge" id="unreadBadge"></span>
+          <button class="btn-logout" onclick="logout()">Logout</button>
+        </div>
+      </div>
+
+      <div class="admin-body">
+        <div class="stats-bar">
+          <div class="stat-box">
+            <div class="stat-num" id="statTotal">—</div>
+            <div class="stat-label">Total submissions</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num" id="statUnread">—</div>
+            <div class="stat-label">Unread</div>
+          </div>
+        </div>
+
+        <div class="submissions-wrapper" id="submissionsArea">
+          <div class="loading-state">Loading submissions…</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <strong>She Can Foundation</strong> — Youth-driven. Community-focused. Opportunity-first.<br />
+    Built with care for every student who dares to try.
+  </footer>
+
+
+  <script>
+    // ─────────────────────────────────────────────
+    // CONFIG — point this at your backend
+    // ─────────────────────────────────────────────
+    const API_BASE = 'http://localhost:5000/api';
+
+    let authToken = localStorage.getItem('scf_token') || null;
+
+
+    // ─────────────────────────────────────────────
+    // PAGE SWITCHING
+    // ─────────────────────────────────────────────
+    function showPage(pageId, btn) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('visible'));
+      document.querySelectorAll('.btn-nav').forEach(b => b.classList.remove('active'));
+      document.getElementById('page-' + pageId).classList.add('visible');
+      if (btn) btn.classList.add('active');
+
+      if (pageId === 'admin') {
+        if (authToken) {
+          showDashboard();
+        } else {
+          document.getElementById('adminLogin').style.display = 'block';
+          document.getElementById('adminDashboard').style.display = 'none';
+        }
+      }
+    }
+
+
+    // ─────────────────────────────────────────────
+    // CONTACT FORM — client-side validation
+    // ─────────────────────────────────────────────
+    const form = document.getElementById('contactForm');
+    const msgField = document.getElementById('message');
+    const charCount = document.getElementById('charCount');
+
+    msgField.addEventListener('input', () => {
+      const len = msgField.value.length;
+      charCount.textContent = len + ' / 2000';
+      charCount.classList.toggle('warn', len > 1800);
+    });
+
+    function clearFieldError(fieldId, errId) {
+      document.getElementById(fieldId).classList.remove('error-field');
+      const el = document.getElementById(errId);
+      el.textContent = '';
+      el.classList.remove('show');
+    }
+
+    function showFieldError(fieldId, errId, msg) {
+      document.getElementById(fieldId).classList.add('error-field');
+      const el = document.getElementById(errId);
+      el.textContent = msg;
+      el.classList.add('show');
+    }
+
+    ['name', 'email', 'message'].forEach(id => {
+      document.getElementById(id).addEventListener('input', () => {
+        clearFieldError(id, 'err-' + id);
+      });
+    });
+
+    function validateForm(name, email, message) {
+      let valid = true;
+
+      if (!name || name.length < 2) {
+        showFieldError('name', 'err-name', 'Please enter your full name (at least 2 characters).');
+        valid = false;
+      } else if (name.length > 100) {
+        showFieldError('name', 'err-name', 'Name cannot exceed 100 characters.');
+        valid = false;
+      }
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || !emailPattern.test(email)) {
+        showFieldError('email', 'err-email', 'Please enter a valid email address.');
+        valid = false;
+      }
+
+      if (!message || message.length < 10) {
+        showFieldError('message', 'err-message', 'Message must be at least 10 characters.');
+        valid = false;
+      }
+
+      if (message && message.length > 2000) {
+        showFieldError('message', 'err-message', 'Message cannot exceed 2000 characters.');
+        valid = false;
+      }
+
+      return valid;
+    }
+
+    function showToast(type, msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      const toastIcon = document.getElementById('toastIcon');
+
+      toast.className = 'toast show ' + type;
+      toastIcon.textContent = type === 'success' ? '✓' : '✕';
+      toastMsg.textContent = msg;
+
+      // Auto-hide success toasts after 5 seconds
+      if (type === 'success') {
+        setTimeout(() => { toast.classList.remove('show'); }, 5000);
+      }
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name    = document.getElementById('name').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      // Clear all previous errors first
+      ['name', 'email', 'message'].forEach(id => clearFieldError(id, 'err-' + id));
+
+      if (!validateForm(name, email, message)) return;
+
+      const btn = document.getElementById('submitBtn');
+      btn.classList.add('loading');
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(API_BASE + '/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, message })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          showToast('success', "Form Submitted Successfully! We'll be in touch soon.");
+          form.reset();
+          charCount.textContent = '0 / 2000';
+          charCount.classList.remove('warn');
+        } else if (res.status === 400 && data.errors) {
+          // Server-side validation errors — map them to the right fields
+          data.errors.forEach(err => {
+            const field = err.path;
+            if (['name', 'email', 'message'].includes(field)) {
+              showFieldError(field, 'err-' + field, err.msg);
+            }
+          });
+        } else if (res.status === 429) {
+          showToast('error', "You've submitted too many times recently. Please wait a bit.");
+        } else {
+          showToast('error', data.message || 'Something went wrong. Please try again.');
+        }
+      } catch (err) {
+        // Network error or server down
+        showToast('error', 'Unable to reach the server. Please check your connection and try again.');
+      } finally {
+        btn.classList.remove('loading');
+        btn.disabled = false;
+      }
+    });
+
+
+    // ─────────────────────────────────────────────
+    // ADMIN — LOGIN
+    // ─────────────────────────────────────────────
+    function showLoginToast(type, msg) {
+      const el = document.getElementById('loginToast');
+      el.className = 'toast show ' + type;
+      // Use textContent to safely insert user-facing strings (avoids innerHTML XSS)
+      el.textContent = (type === 'success' ? '✓ ' : '✕ ') + msg;
+    }
+
+    async function doLogin() {
+      const username = document.getElementById('adminUser').value.trim();
+      const password = document.getElementById('adminPass').value;
+
+      if (!username || !password) {
+        showLoginToast('error', 'Please enter both username and password.');
+        return;
+      }
+
+      const btn = document.getElementById('loginBtn');
+      btn.classList.add('loading');
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(API_BASE + '/admin/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          authToken = data.token;
+          localStorage.setItem('scf_token', authToken);
+          showDashboard();
+        } else {
+          showLoginToast('error', data.message || 'Login failed.');
+        }
+      } catch (err) {
+        showLoginToast('error', 'Could not connect to server.');
+      } finally {
+        btn.classList.remove('loading');
+        btn.disabled = false;
+      }
+    }
+
+    // Allow Enter key on both username and password fields to trigger login
+    document.getElementById('adminUser')?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') doLogin();
+    });
+    document.getElementById('adminPass')?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') doLogin();
+    });
+
+
+    // ─────────────────────────────────────────────
+    // ADMIN — DASHBOARD
+    // ─────────────────────────────────────────────
+    function showDashboard() {
+      document.getElementById('adminLogin').style.display = 'none';
+      document.getElementById('adminDashboard').style.display = 'flex';
+      loadSubmissions();
+    }
+
+    function logout() {
+      authToken = null;
+      localStorage.removeItem('scf_token');
+      document.getElementById('adminDashboard').style.display = 'none';
+      document.getElementById('adminLogin').style.display = 'block';
+      document.getElementById('adminUser').value = '';
+      document.getElementById('adminPass').value = '';
+    }
+
+    async function loadSubmissions() {
+      const area = document.getElementById('submissionsArea');
+      area.innerHTML = '<div class="loading-state">Loading submissions…</div>';
+
+      try {
+        const res = await fetch(API_BASE + '/admin/submissions', {
+          headers: { 'Authorization': 'Bearer ' + authToken }
+        });
+
+        if (res.status === 401) {
+          // Token expired or invalid — log out and show a friendly message
+          logout();
+          showLoginToast('error', 'Your session has expired. Please log in again.');
+          return;
+        }
+
+        const data = await res.json();
+        const list = data.submissions || [];
+
+        // Update stats
+        const unread = list.filter(s => !s.isRead).length;
+        document.getElementById('statTotal').textContent = list.length;
+        document.getElementById('statUnread').textContent = unread;
+        document.getElementById('unreadBadge').textContent = unread > 0 ? unread + ' unread' : 'All read';
+
+        if (list.length === 0) {
+          area.innerHTML = `
+            <div class="empty-state">
+              <div class="icon">📭</div>
+              <p>No submissions yet. Share the form to get started!</p>
+            </div>`;
+          return;
+        }
+
+        // Build table
+        let rows = list.map(s => {
+          const date = new Date(s.createdAt).toLocaleDateString('en-IN', {
+            day: 'numeric', month: 'short', year: 'numeric'
+          });
+          const unreadDot = !s.isRead ? '<span class="unread-dot"></span>' : '';
+          const readBtn = !s.isRead
+            ? `<button class="btn-sm btn-read" onclick="markRead(${s.id}, this)">Mark Read</button>`
+            : '';
+
+          return `
+            <tr class="${!s.isRead ? 'unread' : ''}" id="row-${s.id}">
+              <td class="td-name">${unreadDot}${escHtml(s.name)}</td>
+              <td>${escHtml(s.email)}</td>
+              <td class="td-message">${escHtml(s.message.length > 120 ? s.message.slice(0, 120) + '…' : s.message)}</td>
+              <td>${date}</td>
+              <td>
+                <div class="actions">
+                  ${readBtn}
+                  <button class="btn-sm btn-del" onclick="deleteSub(${s.id})">Delete</button>
+                </div>
+              </td>
+            </tr>`;
+        }).join('');
+
+        area.innerHTML = `
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>`;
+
+      } catch (err) {
+        area.innerHTML = '<div class="empty-state"><p>Failed to load submissions. Please refresh.</p></div>';
+      }
+    }
+
+    async function markRead(id, btn) {
+      btn.disabled = true;
+      try {
+        const res = await fetch(`${API_BASE}/admin/submissions/${id}/read`, {
+          method: 'PATCH',
+          headers: { 'Authorization': 'Bearer ' + authToken }
+        });
+
+        if (res.status === 401) {
+          logout();
+          showLoginToast('error', 'Your session has expired. Please log in again.');
+          return;
+        }
+
+        if (res.ok) {
+          const row = document.getElementById('row-' + id);
+          row.classList.remove('unread');
+          btn.remove();
+          // Remove the unread dot
+          const dot = row.querySelector('.unread-dot');
+          if (dot) dot.remove();
+          // Update stats
+          const current = parseInt(document.getElementById('statUnread').textContent) || 0;
+          const next = Math.max(0, current - 1);
+          document.getElementById('statUnread').textContent = next;
+          document.getElementById('unreadBadge').textContent = next > 0 ? next + ' unread' : 'All read';
+        }
+      } catch (err) {
+        btn.disabled = false;
+      }
+    }
+
+    async function deleteSub(id) {
+      if (!confirm('Delete this submission? This cannot be undone.')) return;
+
+      try {
+        const res = await fetch(`${API_BASE}/admin/submissions/${id}`, {
+          method: 'DELETE',
+          headers: { 'Authorization': 'Bearer ' + authToken }
+        });
+
+        if (res.status === 401) {
+          logout();
+          showLoginToast('error', 'Your session has expired. Please log in again.');
+          return;
+        }
+
+        if (res.ok) {
+          const row = document.getElementById('row-' + id);
+          const wasUnread = row.classList.contains('unread');
+          row.remove();
+
+          // Update stats
+          const total = parseInt(document.getElementById('statTotal').textContent) || 0;
+          const newTotal = Math.max(0, total - 1);
+          document.getElementById('statTotal').textContent = newTotal;
+
+          if (wasUnread) {
+            const current = parseInt(document.getElementById('statUnread').textContent) || 0;
+            const next = Math.max(0, current - 1);
+            document.getElementById('statUnread').textContent = next;
+            document.getElementById('unreadBadge').textContent = next > 0 ? next + ' unread' : 'All read';
+          }
+
+          // If no rows remain, show the empty state instead of a bare table shell
+          if (newTotal === 0) {
+            document.getElementById('submissionsArea').innerHTML = `
+              <div class="empty-state">
+                <div class="icon">📭</div>
+                <p>No submissions yet. Share the form to get started!</p>
+              </div>`;
+          }
+        }
+      } catch (err) {
+        alert('Failed to delete. Please try again.');
+      }
+    }
+
+    // Safely escape HTML to prevent XSS when rendering user input
+    function escHtml(str) {
+      const d = document.createElement('div');
+      d.appendChild(document.createTextNode(str));
+      return d.innerHTML;
+    }
+  </script>
+
+</body>
+</html>

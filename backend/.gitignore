@@ -1,0 +1,6 @@
+node_modules/
+.env
+prisma/shecan.db
+prisma/shecan.db-journal
+.DS_Store
+*.log
